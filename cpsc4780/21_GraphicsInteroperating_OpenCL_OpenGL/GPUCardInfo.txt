@@ -1,0 +1,38 @@
+https://www.cyberciti.biz/faq/howto-find-linux-vga-video-card-ram/
+
+Linux Find Out Video Card GPU Memory RAM Size Using Command Line
+
+You need to use the following commands to find out graphics card (VGA) memory on Linux:
+1. lspci command - It is a utility for displaying information about all PCI buses in the system and all devices connected to them.
+2. /var/log/Xorg.0.log - Xorg log file.
+3. lshw command - List CPU, CPU and other hardware on Linux.
+4. glxinfo command - See information about the GLX implementation on Linux on a given X display.
+
+Detailed steps:
+1. Open a terminal and type the lspci command to list PCI devices on Linux:
+   $ lspci
+2. You need to use string called devices in the specified domain - 03:00.0 VGA 
+   $lspci -v -s 03:00.0
+3. Extract detailed information on the hardware configuration of the Linux machine:
+   $ sudo lshw -C display
+4. Xorg log file to get the GPU info on Linux:
+   $ grep -i --color memory /var/log/Xorg.0.log
+5. OpenGL breif information:
+   glxinfo -B
+
+Notes:
+$ man lspci
+$ man lshw
+$ man glxinfo
+
+====================================================================================
+A shortcut:
+1. If ou have 1 GPU card:
+   lspci  -v -s  $(lspci | grep ' VGA ' | cut -d" " -f 1)
+   Or, if you have mroe than 1 GPU card:
+   lspci | grep ' VGA ' | cut -d" " -f 1 | xargs -i lspci -v -s {}
+2. For nvidia users:
+   nvidia-smi
+ 
+
+
