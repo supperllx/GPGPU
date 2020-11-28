@@ -42,35 +42,17 @@ gluLookAt(eye.x,eye.y,eye.z,view.x,view.y,view.z,up.x,up.y,up.z);
 
 void draw_stuff()
 {
-// int i;
-// struct point front[4]={{0.0,0.0,1.0},{1.0,0.0,1.0},{1.0,1.0,1.0},{0.0,1.0,1.0}};
-// struct point back[4]={{0.0,0.0,0.0},{0.0,1.0,0.0},{1.0,1.0,0.0},{1.0,0.0,0.0}};
-// struct point left[4]={{0.0,0.0,0.0},{0.0,0.0,1.0},{0.0,1.0,1.0},{0.0,1.0,0.0}};
-// struct point right[4]={{1.0,0.0,0.0},{1.0,1.0,0.0},{1.0,1.0,1.0},{1.0,0.0,1.0}};
-// struct point top[4]={{0.0,1.0,0.0},{0.0,1.0,1.0},{1.0,1.0,1.0},{1.0,1.0,0.0}};
-// struct point bottom[4]={{0.0,0.0,0.0},{0.0,0.0,1.0},{1.0,0.0,1.0},{1.0,0.0,0.0}};
-// float mytexcoords[4][2] = {{0.0,1.0},{1.0,1.0},{1.0,0.0},{0.0,0.0}};
 
-// Clear the depth buffer (to +oo) and the background (to gray).
+// Clear the depth buffer (to +oo) and the background (to black).
 glClearColor(0.0,0.0,0.0,0.0);
 glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 
-// Make texture number 1 the current texture and render the front face.
 GLUquadric *quad = gluNewQuadric();
 gluQuadricTexture(quad, 1);
 glBindTexture(GL_TEXTURE_2D,1);
 glEnable(GL_TEXTURE_2D);
 gluSphere(quad, 5.0, 20, 20);
-// glBegin(GL_QUADS);
-// glNormal3f(0.0,0.0,1.0);
-// for(i=0;i<4;i++){
-// 	glTexCoord2fv(mytexcoords[i]);
-// 	glVertex3f(front[i].x,front[i].y,front[i].z);
-// 	}
-// glEnd();
-// glDisable(GL_TEXTURE_2D);
 
-// glutSolidSphere(2,20,20);
 glEnd();
 glRotatef(rotate, 0.0, 1.0, 0.0);
 glFlush();
@@ -78,7 +60,7 @@ glFlush();
 
 void do_lights()
 {
-// Use one white light.
+// Use one blue light.
 float light0_ambient[] = { 0.0, 0.0, 1.0, 0.0 };
 float light0_diffuse[] = { 1.0, 1.0, 1.0, 0.0 };
 float light0_specular[] = { 1.0, 1.0, 1.0, 0.0 };
