@@ -69,17 +69,27 @@ void showGPUinfo() {
 
 
 
-pixel* initCenter(unsigned int picSize, int csize, pixel* pic) {
+//pixel* initCenter(unsigned int picSize, int csize, pixel* pic) {
+//	default_random_engine e;
+//	uniform_int_distribution<unsigned int> dist(0, picSize);
+//
+//	pixel* cts = new pixel[csize];
+//	for (int i = 0; i < csize; ++i) {
+//		unsigned int rand_index = dist(e);
+//		cts[i] = pic[rand_index];
+//	}
+//
+//	return cts;
+//}
+
+void initCenter(unsigned int picSize, int csize, pixel* pic, pixel* cts) {
 	default_random_engine e;
 	uniform_int_distribution<unsigned int> dist(0, picSize);
 
-	pixel* cts = new pixel[csize];
 	for (int i = 0; i < csize; ++i) {
 		unsigned int rand_index = dist(e);
 		cts[i] = pic[rand_index];
 	}
-
-	return cts;
 }
 
 pixel* updateCenter(unsigned int picSzie, int csize, pixel* pic, pixel* centers) {
@@ -147,7 +157,7 @@ void arrayToimg(Mat img, pixel* pic, pixel* cts, int csize) {
 			img.ptr<Vec3b>(i)[j][2] = cts[label].B;
 		}
 	}
-	imwrite("D:/result.bmp", img);
+	imwrite("D:/result-opt2.png", img);
 	cout << "result output success. " << endl;
 }
 
