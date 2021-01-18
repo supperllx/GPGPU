@@ -6,3 +6,6 @@ Repo for General-purpose computing on graphics processing units
 
 Fully GPU based clustering:
 ![OutPut Image](/Kmeans-CUDA/result-opt.png)
+
+Performance Comparison:
+![OutPut Image](/Kmeans-CUDA/performance.png)
